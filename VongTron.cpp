@@ -16,3 +16,24 @@ int main()
     for (auto i : a)
         cout << i << " ";
 }
+
+
+
+//////////// cách bình thường///////////
+// #include <iostream>
+// #include <vector>
+// int main() {
+//     int N, K;
+//     std::cin >> N >> K;
+//     std::vector<int> a(N), new_pos(N);
+//     for (int i = 0; i < N; i++)
+//         std::cin >> a[i];
+//     for (int i = 0; i < N; i++) {
+//         int old_pos = i;
+//         int new_idx = (old_pos + K) % N;
+//         new_pos[new_idx] = a[i];
+//     }
+//     for (auto i : new_pos)
+//         std::cout << i << " ";
+//     return 0;
+// }
