@@ -1,38 +1,32 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-typedef unsigned long long ull;
 typedef long long ll;
 int main()
 {
-    ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    int t;
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    ll t;
     cin >> t;
     while (t--)
     {
         ll k;
         cin >> k;
-        ll ans_m = -1, ans_n = -1, min_diff = 2 * k;
+        ll ans_m = -1, ans_n = -1;
 
         ll sum_mn = k * 2, tempk = sqrt(sum_mn);
 
-        for (ll n = tempk; n >= 2; n--)
+        for (ll m = 1; m < tempk; m++)
         {
-            ll m = (2 * k - 1 - n) / (2 * n + 1);
-            if (2 * m * n + m + n + 1 == sum_mn)
+            ll n = (sum_mn - 1 - m) / (2 * m + 1);
+            if (m <= n && 2 * m * n + m + n + 1 == sum_mn)
             {
-                if (abs(m - n) < min_diff)
-                {
-                    min_diff = abs(m - n);
-                    ans_m = abs(m);
-                    ans_n = abs(n);
-                
-                    if (min_diff <= 1)
-                        break;
-                }
+                ans_m = m;
+                ans_n = n;
             }
         }
-        cout << min(ans_n, ans_m) << " " << max(ans_n, ans_m) << "\n";
+        cout << ans_m << " " << ans_n << "\n";
     }
 
     return 0;
